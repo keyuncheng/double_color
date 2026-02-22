@@ -27,7 +27,7 @@ jobs:
           # if (Test-Path requirements.txt) { pip install -r requirements.txt }
       
       - name: Build with PyInstaller
-        run: pyinstaller --onefile your_script.py
+        run: pyinstaller --onefile double_color.py
       
       - name: Upload EXE artifact
         uses: actions/upload-artifact@v4  # 关键更新：从 v3 改为 v4
