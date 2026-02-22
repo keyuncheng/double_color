@@ -119,3 +119,5 @@ blue_lot_draw_predict = sorted(blue_lot_draw_predict)
 
 print("红球预测：", red_lot_draw_predict)
 print("蓝球预测：", blue_lot_draw_predict)
+
+input("按回车键退出...")
