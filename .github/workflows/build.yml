@@ -1,0 +1,25 @@
+name: Build Windows EXE
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # 允许手动触发
+jobs:
+  build:
+    runs-on: windows-latest  # 使用微软的 Windows 云服务器
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller
+          # 如果你的脚本有其他依赖，在这里添加，例如：pip install -r requirements.txt
+      - name: Build with PyInstaller
+        run: pyinstaller --onefile double_color.py  # double_color.py 换成你的文件名
+      - name: Upload exe
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-exe
+          path: dist/double_color.exe
